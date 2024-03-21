@@ -1,24 +1,24 @@
 import pika
 from models import Order
 
-#dodaje do kolejki 'delivery' 
-def push_to_delivery(order: Order):
+#dodaje do kolejki queue_name
+def push_to_queue(order: Order, queue_name):
     
     connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 
     channel = connection.channel()
 
-    channel.queue_declare(queue='delivery')
+    channel.queue_declare(queue=queue_name)
 
     channel.basic_publish(exchange='',
-                      routing_key='delivery',
+                      routing_key=queue_name,
                       body=order.__repr__())
     
     connection.close()
 
 
-def remove_from_queue(order: Order):
+def remove_from_queue(order: Order, queue_name):
     pass
 
-def get_from_queue() -> Order:
+def get_from_queue(queue_name) -> Order:
     pass
