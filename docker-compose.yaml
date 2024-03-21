@@ -1,0 +1,22 @@
+services:
+  rabbit:
+    image: rabbitmq:3.12-management
+    container_name: rabbit
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    expose:
+      - "5672"
+      - "15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    restart: "always"
+  cukiernia:
+    build: cukiernia
+    environment:
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USERNAME: user
+      RABBITMQ_PASSWORD: password
+    depends_on:
+      - rabbit

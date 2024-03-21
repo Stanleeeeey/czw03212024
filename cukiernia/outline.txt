@@ -1,0 +1,4 @@
+
+1. wziescie zamowien z kolejki
+2. dodanie zrealizowanych do koljnej kolejki
+3. baza danych na realizowane
