@@ -1,7 +1,15 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
+from enum import Enum
+
 db = declarative_base()
+
+class Status(Enum):
+    WAITING = 1
+    PREPARATION = 2
+    WAITING_FOR_DELIVERY = 3
+    DELIVERED = 4
 
 class Order(db):
     __tablename__ = "Orders" #nazwa tabelki
