@@ -1,5 +1,5 @@
 import queue
-from orders_realization import DataBase
+from database import DataBase
 
 
 DataBase()
